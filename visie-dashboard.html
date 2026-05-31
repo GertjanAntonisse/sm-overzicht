@@ -2,62 +2,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Synesthetic Minds — Visie</title>
 <style>
-:root{--bg:#f6f3ec;--surface:#fffdf8;--ink:#1f2937;--muted:#667085;--line:#ddd5c7;--accent:#0f766e}
+:root{--bg:#f6f3ec;--surface:#fffdf8;--ink:#1f2937;--muted:#667085;--line:#ddd5c7;--accent:#0f766e;
+--p:#047857;--bg-p:#ecfdf5;--bd-p:#a7f3d0;--n:#1d4ed8;--bg-n:#eff6ff;--bd-n:#bfdbfe;--c:#4b5563;--bg-c:#f3f4f6;--bd-c:#d1d5db}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Inter",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:15px}
 .wrap{display:flex;max-width:1240px;margin:0 auto}
-.nav{position:sticky;top:0;align-self:flex-start;width:260px;height:100vh;padding:40px 24px;border-right:1px solid var(--line)}
-.brand{font-weight:800;font-size:18px;margin-bottom:4px}.brand .dot{color:var(--accent)}
+.nav{position:sticky;top:0;align-self:flex-start;width:260px;height:100vh;padding:40px 24px;border-right:1px solid var(--line);overflow-y:auto}
+.brand{font-weight:800;font-size:18px}.brand .dot{color:var(--accent)}
 .brand-sub{font-size:12px;color:var(--muted);margin-bottom:28px}
-.nav a{display:block;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px;margin-bottom:2px}
-.nav a:hover{background:var(--bg)}
-.nav-stats{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
-.nav-stats div{display:flex;justify-content:space-between;padding:3px 0}
+.nav a.nl{display:block;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px;margin-bottom:2px}
+.nav a.nl:hover{background:var(--bg)}
+.nav-vraag{margin-top:20px;padding:12px 14px;background:rgba(15,118,110,.06);border:1px solid var(--bd-p);border-radius:8px;font-size:12px;color:var(--accent);line-height:1.4}
+.legend{margin-top:20px;font-size:12px;color:var(--muted)}
+.legend .li{display:flex;align-items:center;gap:8px;padding:3px 0}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.nav-stats{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.nav-stats div{display:flex;justify-content:space-between;padding:3px 0}.stat-urgent{color:#dc2626;font-weight:700}
 .main{flex:1;padding:40px 44px;min-width:0}
-.page-head{margin-bottom:8px}
-.page-head h1{font-size:24px;font-weight:800}
-.page-head .slogan{color:var(--accent);font-weight:600;font-size:14px}
+.page-head h1{font-size:24px;font-weight:800}.page-head .slogan{color:var(--accent);font-weight:600;font-size:14px}
 .updated{color:var(--muted);font-size:12px;margin-bottom:32px}
 .laag{margin-bottom:44px;scroll-margin-top:24px}
 .laag-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--accent);padding-bottom:8px;margin-bottom:14px}
 .laag-num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .laag-head h2{font-size:20px;font-weight:700}
 .laag-intro{color:var(--muted);margin-bottom:18px;max-width:760px}
-.centrale-vraag{background:var(--accent);background:rgba(15,118,110,.06);border-left:4px solid var(--accent);padding:14px 18px;border-radius:6px;font-size:17px;font-weight:600;margin-bottom:14px;max-width:760px}
+.centrale-vraag{background:rgba(15,118,110,.06);border-left:4px solid var(--accent);padding:14px 18px;border-radius:6px;font-size:17px;font-weight:600;margin-bottom:14px;max-width:760px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:16px}
+.card-urgent{border-left:4px solid #dc2626}
 .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:10px}
 .card-head h3{font-size:17px;font-weight:700}
 .badges{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 .verdict{color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
 .hz{font-size:11px;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);padding:3px 9px;border-radius:20px;white-space:nowrap}
-.voorspelling{margin-bottom:14px}
+.voorspelling{margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.tag{font-size:11px;font-weight:600;text-decoration:none;padding:3px 9px;border-radius:6px}
+.tag-horizon{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe}
+.tag-spanning{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
 .block{margin-top:14px}
-.block-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-table.scen{width:100%;border-collapse:collapse;font-size:13px}
-table.scen th{text-align:left;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line);padding:6px 8px}
-table.scen td{border-bottom:1px solid var(--line);padding:8px 8px;vertical-align:top}
-.sc-naam{font-weight:700;white-space:nowrap}
-ul.sig{list-style:none}
-ul.sig li{padding:4px 0 4px 22px;position:relative;font-size:14px}
+.block-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.scen-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.scen{border-radius:9px;padding:12px 14px;border:1px solid var(--line)}
+.scen-p{background:var(--bg-p);border-color:var(--bd-p)}.scen-n{background:var(--bg-n);border-color:var(--bd-n)}.scen-c{background:var(--bg-c);border-color:var(--bd-c)}
+.scen-top{display:flex;flex-direction:column;gap:2px;margin-bottom:6px}
+.scen-naam{font-weight:700;font-size:13px}.scen-p .scen-naam{color:var(--p)}.scen-n .scen-naam{color:var(--n)}.scen-c .scen-naam{color:var(--c)}
+.scen-meta{font-size:11px;color:var(--muted)}
+.scen-arg{font-size:12.5px;line-height:1.45}
+ul.sig{list-style:none}ul.sig li{padding:4px 0 4px 22px;position:relative;font-size:14px}
 ul.sig li:before{content:"\25A1";position:absolute;left:0;color:var(--muted)}
 .issue-link{display:inline-block;margin-top:12px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:600}
 .leeg{color:var(--muted);font-style:italic}
-@media(max-width:820px){.nav{display:none}.main{padding:24px}}
+@media(max-width:900px){.nav{display:none}.main{padding:24px}.scen-grid{grid-template-columns:1fr}}
 </style></head><body>
 <div class="wrap">
   <aside class="nav">
     <div class="brand">Synesthetic Minds<span class="dot">.</span></div>
     <div class="brand-sub">Levend visiedocument</div>
-    
-      <a href="#laag1">Laag 1 — Fundament</a>
-      <a href="#laag2">Laag 2 — Markt & Oplossing</a>
-      <a href="#laag3">Laag 3 — Horizon & Productvisie</a>
-      <a href="#laag4">Laag 4 — SM als Partner</a>
-    
-    <div class="nav-stats">
-      <div><span>Voorspellingen</span><span>4</span></div>
-      <div><span>Horizon-clusters</span><span>1</span></div>
+    <a class="nl" href="#laag1">Laag 1 — Fundament</a>
+    <a class="nl" href="#laag2">Laag 2 — Markt & Oplossing</a>
+    <a class="nl" href="#laag3">Laag 3 — Horizon & Productvisie</a>
+    <a class="nl" href="#laag4">Laag 4 — SM als Partner</a>
+    <div class="nav-vraag">Klopt het beeld dat we hebben van ons werk met het werk zelf?</div>
+    <div class="legend">
+      <div class="li"><span class="dot" style="background:#047857"></span>Progressief</div>
+      <div class="li"><span class="dot" style="background:#1d4ed8"></span>Neutraal</div>
+      <div class="li"><span class="dot" style="background:#4b5563"></span>Conservatief</div>
     </div>
+    <div class="nav-stats"><div><span>Voorspellingen</span><span>4</span></div><div><span>Urgent</span><span class="stat-urgent">1</span></div><div><span>Horizon: nu</span><span>2</span></div><div><span>Horizon: 1-2 jr</span><span>2</span></div><div><span>Horizon: 3-5 jr</span><span>1</span></div></div>
   </aside>
   <main class="main">
     <div class="page-head"><h1>Visie</h1><div class="slogan">Begrijpen vóór bouwen.</div></div>
@@ -65,22 +76,22 @@ ul.sig li:before{content:"\25A1";position:absolute;left:0;color:var(--muted)}
     
       <section id="laag1" class="laag">
         <div class="laag-head"><span class="laag-num">Laag 1</span><h2>Fundament</h2></div>
-        <p class="laag-intro">Waarom SM bestaat: begrijpen vóór overdragen, en bewijzen dat het systeem doet wat het belooft. De centrale vraag waaraan elke laag wordt getoetst:</p>
+        <p class="laag-intro">Waarom SM bestaat: begrijpen vóór overdragen, en bewijzen dat het systeem doet wat het belooft. De vraag waaraan elke laag wordt getoetst:</p>
         <blockquote class="centrale-vraag">Klopt het beeld dat we hebben van ons werk met het werk zelf?</blockquote>
         <a class="issue-link" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/1">Issue #1 ↗</a>
       </section>
-
       <section id="laag2" class="laag">
         <div class="laag-head"><span class="laag-num">Laag 2</span><h2>Markt & Oplossing</h2></div>
         <p class="laag-intro">Waar de markt staat: de voorspellingen die de vraag naar SM bepalen. Maandelijks getoetst door de Signal Digest.</p>
         
-    <article class="card" id="issue-2">
+    <article class="card card-urgent" id="issue-2">
       <div class="card-head">
         <h3>EU AI Act: compliance-druk voor hoog-risico AI-toepassingen</h3>
-        <div class="badges"><span class="verdict" style="background:#d97706">Bijgesteld</span><span class="hz">Horizon: nu</span></div>
+        <div class="badges"><span class="verdict" style="background:#dc2626">Urgent</span><span class="verdict" style="background:#d97706">Bijgesteld</span><span class="hz">Horizon: nu</span></div>
       </div>
       <p class="voorspelling">De EU AI Act treedt gefaseerd in werking tussen 2024 en 2026. Organisaties die AI inzetten voor hoog-risico toepassingen (HR, krediet, veiligheid, overheid) worden verplicht aantoonbaar verantwoord te werken: documentatie, risicobeheer, menselijk toezicht, auditlogs.</p>
-      <div class="block"><div class="block-label">Scenario’s</div><table class="scen"><thead><tr><th>Scenario</th><th>Tijdlijn</th><th>Kans</th><th>Argumenten</th></tr></thead><tbody><tr><td class="sc-naam">Progressief</td><td>Nu–2026</td><td>45%</td><td>Handhaving begint in 2025, eerste boetes volgen snel. Organisaties reageren reactief. Vraag naar borgingsdiensten piekt acuut. SM moet zichtbaar en geloofwaardig zijn vóórdat de golf komt.</td></tr><tr><td class="sc-naam">Neutraal</td><td>2026–2028</td><td>40%</td><td>Handhaving verloopt traag door beperkte toezichtcapaciteit. Organisaties wachten af. SM bouwt positie via thought leadership terwijl de markt rijpt.</td></tr><tr><td class="sc-naam">Conservatief</td><td>2028+</td><td>15%</td><td>AI Act wordt beperkt gehandhaafd, vergelijkbaar met vroege GDPR. Compliancedruk blijft laag. SM moet propositie losmaken van compliance en op inhoudelijke verbetering inzetten.</td></tr></tbody></table></div>
+      <div class="tags"><a class="tag tag-horizon" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/6" title="AI-integriteit als standaard: de AI Act is het vroege signaal dat dit ">voedt #6</a><a class="tag tag-spanning" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/3" title="Vertrouwen daalt: compliance-druk en vertrouwenscrisis versterken elka">spanning met #3</a><a class="tag tag-spanning" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/5" title="Thought leadership: de trilogie positioneert SM als iemand die het pro">spanning met #5</a></div>
+      <div class="block"><div class="block-label">Scenario’s</div><div class="scen-grid"><div class="scen scen-p"><div class="scen-top"><span class="scen-naam">Progressief</span><span class="scen-meta">Nu–2026 · kans 45%</span></div><div class="scen-arg">Handhaving begint in 2025, eerste boetes volgen snel. Organisaties reageren reactief. Vraag naar borgingsdiensten piekt acuut. SM moet zichtbaar en geloofwaardig zijn vóórdat de golf komt.</div></div><div class="scen scen-n"><div class="scen-top"><span class="scen-naam">Neutraal</span><span class="scen-meta">2026–2028 · kans 40%</span></div><div class="scen-arg">Handhaving verloopt traag door beperkte toezichtcapaciteit. Organisaties wachten af. SM bouwt positie via thought leadership terwijl de markt rijpt.</div></div><div class="scen scen-c"><div class="scen-top"><span class="scen-naam">Conservatief</span><span class="scen-meta">2028+ · kans 15%</span></div><div class="scen-arg">AI Act wordt beperkt gehandhaafd, vergelijkbaar met vroege GDPR. Compliancedruk blijft laag. SM moet propositie losmaken van compliance en op inhoudelijke verbetering inzetten.</div></div></div></div>
       <div class="block"><div class="block-label">Wat maakt dit mogelijk voor SM</div><p>De AI Act geeft SM een externe legitimering die niet verzonnen hoeft te worden. Compliance is de drempel — begrip en borging zijn de waarde erboven. Organisaties die nu handelen bouwen een voorsprong die moeilijk te kopiëren is.</p></div>
       <div class="block"><div class="block-label">Signalen om te monitoren</div><ul class="sig"><li>Eerste handhavingsbesluiten EU AI Act gepubliceerd door toezichthouders</li><li>Groei van vacatures &quot;AI compliance officer&quot;, &quot;Responsible AI&quot; (LinkedIn)</li><li>Aanbestedingen overheid met AI-borgingsvereiste (TenderNed)</li><li>Grote consultancybureaus die AI-auditpraktijken lanceren</li></ul></div>
       <a class="issue-link" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/2">Issue #2 ↗</a>
@@ -91,7 +102,8 @@ ul.sig li:before{content:"\25A1";position:absolute;left:0;color:var(--muted)}
         <div class="badges"><span class="verdict" style="background:#16a34a">Bevestigd</span><span class="hz">Horizon: 1-2 jaar</span></div>
       </div>
       <p class="voorspelling">Naarmate AI-systemen breder worden ingezet, neemt de kans toe dat stille fouten zichtbaar worden: hallucinaties in klantcommunicatie, onverklaarbare aanbevelingen, outputs die intern correct lijken maar extern schade veroorzaken. Dit leidt tot een vertrouwenscrisis — niet in de technologie, maar in de organisaties die AI hebben ingezet.</p>
-      <div class="block"><div class="block-label">Scenario’s</div><table class="scen"><thead><tr><th>Scenario</th><th>Tijdlijn</th><th>Kans</th><th>Argumenten</th></tr></thead><tbody><tr><td class="sc-naam">Progressief</td><td>Nu–2027</td><td>35%</td><td>Een publiek AI-incident bij een grote organisatie (bank, overheid, zorg) veroorzaakt brede mediaaandacht. Vertrouwen daalt snel. Vraag naar externe borging piekt acuut. SM moet dan al zichtbaar en geloofwaardig zijn — dit moment laat zich niet plannen.</td></tr><tr><td class="sc-naam">Neutraal</td><td>2027–2029</td><td>50%</td><td>Vertrouwen erodeert geleidelijk door accumulatie van kleine incidenten. Geen dramatisch kantelpunt. SM bouwt positie via thought leadership terwijl het besef langzaam groeit.</td></tr><tr><td class="sc-naam">Conservatief</td><td>2029+</td><td>15%</td><td>AI-systemen verbeteren snel genoeg om vertrouwensproblemen voor te blijven. Vraag naar borging blijft niche. SM moet op een bredere propositie inzetten dan crisisbeheer.</td></tr></tbody></table></div>
+      <div class="tags"><a class="tag tag-horizon" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/6" title="AI-integriteit als standaard: vertrouwenserosie is het mechanisme dat ">voedt #6</a><a class="tag tag-spanning" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/2" title="EU AI Act: compliance-druk en vertrouwenscrisis kunnen gelijktijdig op">spanning met #2</a><a class="tag tag-spanning" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/4" title="Borging vraag: vertrouwenscrisis is de trigger, borgingsdienst is het ">spanning met #4</a></div>
+      <div class="block"><div class="block-label">Scenario’s</div><div class="scen-grid"><div class="scen scen-p"><div class="scen-top"><span class="scen-naam">Progressief</span><span class="scen-meta">Nu–2027 · kans 35%</span></div><div class="scen-arg">Een publiek AI-incident bij een grote organisatie (bank, overheid, zorg) veroorzaakt brede mediaaandacht. Vertrouwen daalt snel. Vraag naar externe borging piekt acuut. SM moet dan al zichtbaar en geloofwaardig zijn — dit moment laat zich niet plannen.</div></div><div class="scen scen-n"><div class="scen-top"><span class="scen-naam">Neutraal</span><span class="scen-meta">2027–2029 · kans 50%</span></div><div class="scen-arg">Vertrouwen erodeert geleidelijk door accumulatie van kleine incidenten. Geen dramatisch kantelpunt. SM bouwt positie via thought leadership terwijl het besef langzaam groeit.</div></div><div class="scen scen-c"><div class="scen-top"><span class="scen-naam">Conservatief</span><span class="scen-meta">2029+ · kans 15%</span></div><div class="scen-arg">AI-systemen verbeteren snel genoeg om vertrouwensproblemen voor te blijven. Vraag naar borging blijft niche. SM moet op een bredere propositie inzetten dan crisisbeheer.</div></div></div></div>
       <div class="block"><div class="block-label">Wat maakt dit mogelijk voor SM</div><p>Elke publieke AI-fout bij een vergelijkbaar bedrijf is een potentieel acquisitiegesprek. SM hoeft niet te verkopen — het hoeft er te zijn op het moment dat de vraag ontstaat. Dat vraagt om zichtbaarheid nu, niet pas als de crisis er is.</p></div>
       <div class="block"><div class="block-label">Signalen om te monitoren</div><ul class="sig"><li>Edelman Trust Barometer — AI-onderdeel (jaarlijks, januari)</li><li>McKinsey AI Index: percentage organisaties dat AI-problemen rapporteert</li><li>Mediaberichten over AI-fouten bij bekende organisaties (Google Alerts instellen)</li><li>Toename AI-gerelateerde aansprakelijkheidszaken (EUR-Lex, rechtspraak.nl)</li></ul></div>
       <a class="issue-link" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/3">Issue #3 ↗</a>
@@ -102,7 +114,8 @@ ul.sig li:before{content:"\25A1";position:absolute;left:0;color:var(--muted)}
         <div class="badges"><span class="verdict" style="background:#16a34a">Bevestigd</span><span class="hz">Horizon: 1-2 jaar</span></div>
       </div>
       <p class="voorspelling">Organisaties die AI hebben ingezet maar er niet op kunnen vertrouwen, gaan op zoek naar externe partijen die hen helpen dat vertrouwen te herstellen of aan te tonen dat het terecht is. Dit vertaalt zich in een nieuwe categorie dienstverlening: geen implementatiepartner, maar een borgingspartner.</p>
-      <div class="block"><div class="block-label">Scenario’s</div><table class="scen"><thead><tr><th>Scenario</th><th>Tijdlijn</th><th>Kans</th><th>Argumenten</th></tr></thead><tbody><tr><td class="sc-naam">Progressief</td><td>Nu–2027</td><td>30%</td><td>Grote accountantskantoren lanceren AI-auditpraktijken en definiëren de markt rond complianceframeworks. SM moet snel een onderscheidende positie innemen voordat de categorie gestandaardiseerd is. Window is nu.</td></tr><tr><td class="sc-naam">Neutraal</td><td>2027–2029</td><td>50%</td><td>Markt groeit geleidelijk. SM heeft ruimte om positie te bouwen via thought leadership en eerste klanten. Onderscheid op aanpak (werkprocesbegrip vs. framework) wordt het winnende argument.</td></tr><tr><td class="sc-naam">Conservatief</td><td>2029+</td><td>20%</td><td>Vraag blijft niche, beperkt tot gereguleerde sectoren. SM moet segment kiezen: overheid, financieel of zorg. Brede markt is er niet — positionering wordt scherper en smaller.</td></tr></tbody></table></div>
+      <div class="tags"><a class="tag tag-horizon" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/6" title="AI-integriteit als standaard: borgingsvraag is de commerciële uitdrukk">voedt #6</a><a class="tag tag-spanning" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/7" title="Aanbod-definitie: de borgingsmarkt groeit, maar in welke vorm bedient ">spanning met #7</a></div>
+      <div class="block"><div class="block-label">Scenario’s</div><div class="scen-grid"><div class="scen scen-p"><div class="scen-top"><span class="scen-naam">Progressief</span><span class="scen-meta">Nu–2027 · kans 30%</span></div><div class="scen-arg">Grote accountantskantoren lanceren AI-auditpraktijken en definiëren de markt rond complianceframeworks. SM moet snel een onderscheidende positie innemen voordat de categorie gestandaardiseerd is. Window is nu.</div></div><div class="scen scen-n"><div class="scen-top"><span class="scen-naam">Neutraal</span><span class="scen-meta">2027–2029 · kans 50%</span></div><div class="scen-arg">Markt groeit geleidelijk. SM heeft ruimte om positie te bouwen via thought leadership en eerste klanten. Onderscheid op aanpak (werkprocesbegrip vs. framework) wordt het winnende argument.</div></div><div class="scen scen-c"><div class="scen-top"><span class="scen-naam">Conservatief</span><span class="scen-meta">2029+ · kans 20%</span></div><div class="scen-arg">Vraag blijft niche, beperkt tot gereguleerde sectoren. SM moet segment kiezen: overheid, financieel of zorg. Brede markt is er niet — positionering wordt scherper en smaller.</div></div></div></div>
       <div class="block"><div class="block-label">Wat maakt dit mogelijk voor SM</div><p>De groei van de borgingsmarkt geeft SM een bestaande categorie om in te positioneren — zonder die zelf te hoeven uitleggen. SM&#x27;s taak: aantonen waarom werkprocesbegrip + technische borging meer waarde levert dan een framework alleen.</p></div>
       <div class="block"><div class="block-label">Signalen om te monitoren</div><ul class="sig"><li>Groei van vacatures voor AI governance, AI auditor, Responsible AI (LinkedIn, Indeed)</li><li>Nieuwe AI-integriteitsservices van KPMG, Deloitte, PwC</li><li>Aanbestedingen met borgingsvereiste (TenderNed)</li><li>Tarieven en positionering AI-auditdiensten in de markt</li></ul></div>
       <a class="issue-link" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/4">Issue #4 ↗</a>
@@ -113,13 +126,13 @@ ul.sig li:before{content:"\25A1";position:absolute;left:0;color:var(--muted)}
         <div class="badges"><span class="verdict" style="background:#16a34a">Bevestigd</span><span class="hz">Horizon: nu</span></div>
       </div>
       <p class="voorspelling">In B2B consultancy, zeker in een nieuw domein als AI-borging, gaat vertrouwen aan de opdracht vooraf. Organisaties kiezen een partner op basis van herkenning: &quot;dit is iemand die begrijpt wat er bij ons speelt.&quot; Thought leadership — zichtbaarheid op de vraag vóórdat er een opdracht is — wordt het primaire acquisitiekanaal.</p>
-      <div class="block"><div class="block-label">Scenario’s</div><table class="scen"><thead><tr><th>Scenario</th><th>Tijdlijn</th><th>Kans</th><th>Argumenten</th></tr></thead><tbody><tr><td class="sc-naam">Progressief</td><td>Nu–2026</td><td>30%</td><td>Een publicatie of LinkedIn-reeks over de sluimerende fout genereert inbound reacties nog vóór de trilogie volledig is. Eerste opdrachten komen via thought leadership, niet via koude acquisitie.</td></tr><tr><td class="sc-naam">Neutraal</td><td>2026–2028</td><td>50%</td><td>Trilogie als ruggengraat bouwt langzaam autoriteit op. Inbound vraag groeit naarmate meer content gepubliceerd wordt en het netwerk groeit. Thought leadership werkt, maar vergt consistentie over meerdere jaren.</td></tr><tr><td class="sc-naam">Conservatief</td><td>2028+</td><td>20%</td><td>Thought leadership trekt aandacht maar converteert niet naar opdrachten. SM moet aanvullende acquisitiekanalen opzetten: netwerk, events, partnerships met implementatiepartners.</td></tr></tbody></table></div>
+      <div class="tags"><a class="tag tag-horizon" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/6" title="AI-integriteit als standaard: thought leadership nu positioneert SM al">voedt #6</a><a class="tag tag-spanning" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/2" title="EU AI Act: compliance-urgentie kan thought leadership versnellen. Een ">spanning met #2</a><a class="tag tag-spanning" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/4" title="Borging vraag: thought leadership trekt de juiste doelgroep aan — maar">spanning met #4</a></div>
+      <div class="block"><div class="block-label">Scenario’s</div><div class="scen-grid"><div class="scen scen-p"><div class="scen-top"><span class="scen-naam">Progressief</span><span class="scen-meta">Nu–2026 · kans 30%</span></div><div class="scen-arg">Een publicatie of LinkedIn-reeks over de sluimerende fout genereert inbound reacties nog vóór de trilogie volledig is. Eerste opdrachten komen via thought leadership, niet via koude acquisitie.</div></div><div class="scen scen-n"><div class="scen-top"><span class="scen-naam">Neutraal</span><span class="scen-meta">2026–2028 · kans 50%</span></div><div class="scen-arg">Trilogie als ruggengraat bouwt langzaam autoriteit op. Inbound vraag groeit naarmate meer content gepubliceerd wordt en het netwerk groeit. Thought leadership werkt, maar vergt consistentie over meerdere jaren.</div></div><div class="scen scen-c"><div class="scen-top"><span class="scen-naam">Conservatief</span><span class="scen-meta">2028+ · kans 20%</span></div><div class="scen-arg">Thought leadership trekt aandacht maar converteert niet naar opdrachten. SM moet aanvullende acquisitiekanalen opzetten: netwerk, events, partnerships met implementatiepartners.</div></div></div></div>
       <div class="block"><div class="block-label">Wat maakt dit mogelijk voor SM</div><p>De trilogie is een acquisitie-asset die ook na publicatie blijft werken. Elk hoofdstuk is een argument voor SM&#x27;s propositie — zonder dat het zo hoeft te klinken. Daarmee is thought leadership een schaalmechanisme dat niet afhankelijk is van persoonlijke netwerkinspanning.</p></div>
       
       <a class="issue-link" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/5">Issue #5 ↗</a>
     </article>
       </section>
-
       <section id="laag3" class="laag">
         <div class="laag-head"><span class="laag-num">Laag 3</span><h2>Horizon & Productvisie</h2></div>
         <p class="laag-intro">Waar AI heen gaat: de horizon-clusters die de architectuurkeuzes van vandaag bepalen, en de inspirerende kant voor wie wil starten.</p>
@@ -133,10 +146,10 @@ ul.sig li:before{content:"\25A1";position:absolute;left:0;color:var(--muted)}
       
       
       
+      
       <a class="issue-link" href="https://github.com/GertjanAntonisse/synestheticminds-visie/issues/6">Issue #6 ↗</a>
     </article>
       </section>
-
       <section id="laag4" class="laag">
         <div class="laag-head"><span class="laag-num">Laag 4</span><h2>SM als Partner</h2></div>
         <p class="laag-intro">Wat SM uiteindelijk wil zijn: de relatie en de vorm van het aanbod.</p>
